@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var optionOneButton: UIButton!
+    @IBOutlet weak var optionTwoButton: UIButton!
+    @IBOutlet weak var optionThreeButton: UIButton!
+    
     @IBOutlet weak var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
@@ -38,11 +40,19 @@ class ViewController: UIViewController {
        
     }
     @objc func updateUI(){
+        
         questionLabel.text = quizBrain.getQuestionText()
         progressBar.progress = quizBrain.getProgress()
         scoreLabel.text = "Score: \(quizBrain.getScore())"
-        trueButton.backgroundColor = .clear
-        falseButton.backgroundColor = .clear
+        
+        optionOneButton.setTitle(quizBrain.getOptionalAnswer(index:0), for: .normal)
+        optionTwoButton.setTitle(quizBrain.getOptionalAnswer(index:1), for: .normal)
+        optionThreeButton.setTitle(quizBrain.getOptionalAnswer(index:2), for: .normal)
+            
+        optionOneButton.backgroundColor = .clear
+        optionTwoButton.backgroundColor = .clear
+        optionThreeButton.backgroundColor = .clear
+        
         
     }
     
